@@ -1,0 +1,16 @@
+#!/bin/bash
+
+bash /usr/local/taiga/configure
+
+cd /usr/local/taiga/taiga-back/
+
+python manage.py collectstatic --noinput
+
+echo "Waiting for Postgresql to be available..."
+while ! nc -z $POSTGRES_PORT_5432_TCP_ADDR 5432; do
+  sleep 1
+done
+
+python manage.py migrate --noinput
+
+/usr/local/bin/circusd /usr/local/taiga/circus.ini
