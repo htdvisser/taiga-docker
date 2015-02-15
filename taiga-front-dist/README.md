@@ -1,6 +1,6 @@
 # htdvisser/taiga-front-dist
 
-Taiga is a project management platform for startups and agile developers & designers who want a simple, beautiful tool that makes work truly enjoyable.
+[Taiga](https://taiga.io/) is a project management platform for startups and agile developers & designers who want a simple, beautiful tool that makes work truly enjoyable.
 
 This Docker image can be used for running the Taiga frontend. It works together with the [htdvisser/taiga-back](https://registry.hub.docker.com/u/htdvisser/taiga-back/) image.
 
