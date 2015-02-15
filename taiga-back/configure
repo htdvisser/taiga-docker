@@ -23,7 +23,7 @@ from .common import *
 
 DATABASES = {
    'default': {
-       'ENGINE': 'django.db.backends.postgresql_psycopg2',
+       'ENGINE': 'transaction_hooks.backends.postgresql_psycopg2',
        'NAME': '${POSTGRES_ENV_POSTGRES_USER}',
        'USER': '${POSTGRES_ENV_POSTGRES_USER}',
        'PASSWORD': '${POSTGRES_ENV_POSTGRES_PASSWORD}',
