@@ -1,0 +1,29 @@
+#!/bin/bash
+
+cat > /etc/nginx/upstream.conf <<EOL
+
+upstream taiga-back {
+  server ${TAIGABACK_PORT_8000_TCP_ADDR}:8000;
+}
+
+EOL
+
+PUBLIC_REGISTER_ENABLED=${PUBLIC_REGISTER_ENABLED:-true}
+API=${API:-/api/v1/}
+
+cat > /usr/local/taiga/taiga-front-dist/dist/js/conf.json <<EOL
+
+{
+  "api": "${API}",
+  "eventsUrl": null,
+  "debug": false,
+  "publicRegisterEnabled": ${PUBLIC_REGISTER_ENABLED},
+  "feedbackEnabled": true,
+  "privacyPolicyUrl": null,
+  "termsOfServiceUrl": null,
+  "maxUploadFileSize": null,
+  "gitHubClientId": null,
+  "contribPlugins": [ ]
+}
+
+EOL
