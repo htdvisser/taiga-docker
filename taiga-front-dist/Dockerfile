@@ -1,14 +1,9 @@
-FROM debian:wheezy
+FROM nginx:1.7
 
 MAINTAINER Hylke Visser <htdvisser@gmail.com>
 
-# Install NginX
-RUN apt-key adv --keyserver pgp.mit.edu --recv-keys 573BFD6B3D8FBC641079A6ABABF5BD827BD9BF62
-RUN echo "deb http://nginx.org/packages/mainline/debian/ wheezy nginx" >> /etc/apt/sources.list
-
-ENV NGINX_VERSION 1.7.10-1~wheezy
-
-RUN apt-get update && apt-get install -y git nginx=${NGINX_VERSION} && rm -rf /var/lib/apt/lists/*
+# Install Git
+RUN apt-get update && apt-get install -y git && rm -rf /var/lib/apt/lists/*
 
 # NginX Configuration
 ADD nginx.conf /etc/nginx/nginx.conf
