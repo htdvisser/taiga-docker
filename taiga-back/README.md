@@ -15,6 +15,50 @@ A [postgres](https://registry.hub.docker.com/_/postgres/) container should be li
 docker run --name taiga-back --link postgres_container_name:postgres htdvisser/taiga-back
 ```
 
+## Docker-compose
+
+For a complete taiga installation (``htdvisser/taiga-back`` and ``htdvisser/taiga-front-dist``) you can use this docker-compose configuration:
+
+```
+data:
+  image: tianon/true
+  volumes:
+    - /var/lib/postgresql/data
+    - /usr/local/taiga/media
+    - /usr/local/taiga/static
+    - /usr/local/taiga/logs
+db:
+  image: postgres
+  environment:
+    - POSTGRES_USER=taiga
+    - POSTGRES_PASSWORD=password
+  volumes_from:
+    - data
+taigaback:
+  image: htdvisser/taiga-back:1.6.0
+  hostname: dev.example.com
+  environment:
+    - SECRET_KEY=examplesecretkey
+    - EMAIL_USE_TLS=True
+    - EMAIL_HOST=smtp.gmail.com
+    - EMAIL_PORT=587
+    - EMAIL_HOST_USER=youremail@gmail.com
+    - EMAIL_HOST_PASSWORD=yourpassword
+  links:
+    - db:postgres
+  volumes_from:
+    - data
+taigafront:
+  image: htdvisser/taiga-front-dist:1.6.0
+  hostname: dev.example.com
+  links:
+    - taigaback
+  volumes_from:
+    - data
+  ports:
+    - 0.0.0.0:80:80
+```
+
 ## Database Initialization
 
 To initialize the database, use ``docker exec -it taiga-back bash`` and execute the following commands:

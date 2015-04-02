@@ -15,6 +15,50 @@ A [htdvisser/taiga-back](https://registry.hub.docker.com/u/htdvisser/taiga-back/
 docker run --name taiga-front-dist --link taiga_back_container_name:taigaback --volumes-from taigaback htdvisser/taiga-front-dist
 ```
 
+## Docker-compose
+
+For a complete taiga installation (``htdvisser/taiga-back`` and ``htdvisser/taiga-front-dist``) you can use this docker-compose configuration:
+
+```
+data:
+  image: tianon/true
+  volumes:
+    - /var/lib/postgresql/data
+    - /usr/local/taiga/media
+    - /usr/local/taiga/static
+    - /usr/local/taiga/logs
+db:
+  image: postgres
+  environment:
+    - POSTGRES_USER=taiga
+    - POSTGRES_PASSWORD=password
+  volumes_from:
+    - data
+taigaback:
+  image: htdvisser/taiga-back:1.6.0
+  hostname: dev.example.com
+  environment:
+    - SECRET_KEY=examplesecretkey
+    - EMAIL_USE_TLS=True
+    - EMAIL_HOST=smtp.gmail.com
+    - EMAIL_PORT=587
+    - EMAIL_HOST_USER=youremail@gmail.com
+    - EMAIL_HOST_PASSWORD=yourpassword
+  links:
+    - db:postgres
+  volumes_from:
+    - data
+taigafront:
+  image: htdvisser/taiga-front-dist:1.6.0
+  hostname: dev.example.com
+  links:
+    - taigaback
+  volumes_from:
+    - data
+  ports:
+    - 0.0.0.0:80:80
+```
+
 ## Environment
 
 * ``PUBLIC_REGISTER_ENABLED`` defaults to ``true``
