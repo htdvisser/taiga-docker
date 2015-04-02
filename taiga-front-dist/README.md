@@ -12,7 +12,7 @@ This Docker image can be used for running the Taiga frontend. It works together 
 A [htdvisser/taiga-back](https://registry.hub.docker.com/u/htdvisser/taiga-back/) container should be linked to the taiga-front-dist container. Also connect the volumes of this the taiga-back container if you want to serve the static files for the admin panel.
 
 ```
-docker run --name taiga-front-dist --link taiga_back_container_name:taigaback --volumes-from taigaback htdvisser/taiga-back
+docker run --name taiga-front-dist --link taiga_back_container_name:taigaback --volumes-from taigaback htdvisser/taiga-front-dist
 ```
 
 ## Environment
