@@ -13,4 +13,6 @@ done
 
 python manage.py migrate --noinput
 
+chown -R taiga /usr/local/taiga/media /usr/local/taiga/static /usr/local/taiga/logs
+
 /usr/local/bin/circusd /usr/local/taiga/circus.ini
