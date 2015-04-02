@@ -12,7 +12,7 @@ This Docker image can be used for running the Taiga backend. It works together w
 A [postgres](https://registry.hub.docker.com/_/postgres/) container should be linked to the taiga-back container. The taiga-back container will use the ``POSTGRES_USER`` and ``POSTGRES_PASSWORD`` environment variables that are supplied to the postgres container.
 
 ```
-docker run --name taiga-back --link postgres_container_name:postgres htdvisser/taiga-back
+docker run --name taiga_back_container_name --link postgres_container_name:postgres htdvisser/taiga-back
 ```
 
 ## Docker-compose
