@@ -8,6 +8,14 @@ upstream taiga-back {
 
 EOL
 
+# Configure HTTP or HTTPS for nginx proxy
+WEB_CONFIG=web-${SCHEME:-http}.conf
+sed -i "/include .*.conf;/c\  include ${WEB_CONFIG};" /etc/nginx/nginx.conf
+
+mkdir -p /etc/nginx/ssl
+[ ! -z "${SSL_CRT}" ] && echo "${SSL_CRT}" > /etc/nginx/ssl/ssl.crt
+[ ! -z "${SSL_KEY}" ] && echo "${SSL_KEY}" > /etc/nginx/ssl/ssl.key
+
 PUBLIC_REGISTER_ENABLED=${PUBLIC_REGISTER_ENABLED:-true}
 API=${API:-/api/v1/}
 

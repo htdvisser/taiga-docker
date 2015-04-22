@@ -20,7 +20,7 @@ docker run --name taiga_back_container_name --link postgres_container_name:postg
 
 For a complete taiga installation (``htdvisser/taiga-back`` and ``htdvisser/taiga-front-dist``) you can use this docker-compose configuration:
 
-```
+```yaml
 data:
   image: tianon/true
   volumes:
@@ -31,20 +31,20 @@ data:
 db:
   image: postgres
   environment:
-    - POSTGRES_USER=taiga
-    - POSTGRES_PASSWORD=password
+    POSTGRES_USER: taiga
+    POSTGRES_PASSWORD: password
   volumes_from:
     - data
 taigaback:
   image: htdvisser/taiga-back:stable
   hostname: dev.example.com
   environment:
-    - SECRET_KEY=examplesecretkey
-    - EMAIL_USE_TLS=True
-    - EMAIL_HOST=smtp.gmail.com
-    - EMAIL_PORT=587
-    - EMAIL_HOST_USER=youremail@gmail.com
-    - EMAIL_HOST_PASSWORD=yourpassword
+    SECRET_KEY: examplesecretkey
+    EMAIL_USE_TLS: True
+    EMAIL_HOST: smtp.gmail.com
+    EMAIL_PORT: 587
+    EMAIL_HOST_USER: youremail@gmail.com
+    EMAIL_HOST_PASSWORD: yourpassword
   links:
     - db:postgres
   volumes_from:
@@ -64,7 +64,7 @@ taigafront:
 
 To initialize the database, use ``docker exec -it taiga-back bash`` and execute the following commands:
 
-```
+```bash
 cd /usr/local/taiga/taiga-back/
 python manage.py loaddata initial_user
 python manage.py loaddata initial_project_templates
@@ -85,9 +85,9 @@ URLs for static files and media files from taiga-back:
 
 Domain configuration:
 
-* ``API_SCHEME`` defaults to ``"http"``
+* ``API_SCHEME`` defaults to ``"http"``. Use ``https`` if ``htdvisser/taiga-front-dist`` is used and SSL enabled.
 * ``API_DOMAIN`` defaults to ``"$HOSTNAME"``
-* ``FRONT_SCHEME`` defaults to ``"http"``
+* ``FRONT_SCHEME`` defaults to ``"http"``. Use ``https`` if ``htdvisser/taiga-front-dist`` is used and SSL enabled.
 * ``FRONT_DOMAIN`` defaults to ``"$HOSTNAME"``
 
 Email configuration:
