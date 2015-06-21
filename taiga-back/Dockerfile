@@ -16,7 +16,7 @@ RUN \
   git clone https://github.com/taigaio/taiga-back.git /usr/local/taiga/taiga-back && \
   mkdir /usr/local/taiga/media /usr/local/taiga/static /usr/local/taiga/logs && \
   cd /usr/local/taiga/taiga-back && \
-  git checkout stable && \
+  git checkout b60922422df5b41ef36803a15af375c0f5e0605d && \
   pip install -r requirements.txt && \
   touch /usr/local/taiga/taiga-back/settings/dockerenv.py && \
   touch /usr/local/taiga/circus.ini
