@@ -20,7 +20,7 @@ docker run --name taiga_front_dist_container_name --link taiga_back_container_na
 
 For a complete taiga installation (``htdvisser/taiga-back`` and ``htdvisser/taiga-front-dist``) you can use this docker-compose configuration:
 
-```yaml
+```
 data:
   image: tianon/true
   volumes:
@@ -68,7 +68,7 @@ requests will be redirected to *https* (port 443).
 
 Example:
 
-```yaml
+```
 data:
   ...
 db:
