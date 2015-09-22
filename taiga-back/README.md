@@ -98,3 +98,9 @@ Email configuration:
 * ``EMAIL_HOST_USER`` defaults to ``""``
 * ``EMAIL_HOST_PASSWORD`` defaults to ``""``
 * ``DEFAULT_FROM_EMAIL`` defaults to ``"no-reply@example.com"``
+
+Database configuration:
+
+* ``POSTGRES_NAME``. Use to override database name.
+* ``POSTGRES_USER``. Use to override user specified in linked postgres container.
+* ``POSTGRES_PASSWORD``. Use to override password specified in linked postgres container.
