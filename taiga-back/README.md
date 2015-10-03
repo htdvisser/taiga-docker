@@ -101,6 +101,6 @@ Email configuration:
 
 Database configuration:
 
-* ``POSTGRES_NAME``. Use to override database name.
+* ``POSTGRES_DB_NAME``. Use to override database name.
 * ``POSTGRES_USER``. Use to override user specified in linked postgres container.
 * ``POSTGRES_PASSWORD``. Use to override password specified in linked postgres container.
