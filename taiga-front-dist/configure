@@ -19,7 +19,7 @@ mkdir -p /etc/nginx/ssl
 PUBLIC_REGISTER_ENABLED=${PUBLIC_REGISTER_ENABLED:-true}
 API=${API:-/api/v1/}
 
-cat > /usr/local/taiga/taiga-front-dist/dist/js/conf.json <<EOL
+cat > /usr/local/taiga/taiga-front-dist/dist/conf.json <<EOL
 
 {
   "api": "${API}",
