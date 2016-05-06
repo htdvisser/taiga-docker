@@ -22,16 +22,22 @@ API=${API:-/api/v1/}
 cat > /usr/local/taiga/taiga-front-dist/dist/conf.json <<EOL
 
 {
-  "api": "${API}",
-  "eventsUrl": null,
-  "debug": false,
-  "publicRegisterEnabled": ${PUBLIC_REGISTER_ENABLED},
-  "feedbackEnabled": true,
-  "privacyPolicyUrl": null,
-  "termsOfServiceUrl": null,
-  "maxUploadFileSize": null,
-  "gitHubClientId": null,
-  "contribPlugins": [ ]
+    "api": "${API}",
+    "eventsUrl": null,
+    "eventsMaxMissedHeartbeats": 5,
+    "eventsHeartbeatIntervalTime": 60000,
+    "debug": true,
+    "debugInfo": false,
+    "defaultLanguage": "en",
+    "themes": ["taiga"],
+    "defaultTheme": "taiga",
+    "publicRegisterEnabled": ${PUBLIC_REGISTER_ENABLED},
+    "feedbackEnabled": true,
+    "privacyPolicyUrl": null,
+    "termsOfServiceUrl": null,
+    "maxUploadFileSize": null,
+    "contribPlugins": []
 }
+
 
 EOL
