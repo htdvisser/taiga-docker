@@ -63,7 +63,7 @@ taigafront:
 ## SSL Support
 
 HTTPS can be enabled by setting ``SCHEME`` to ``https`` and filling ``SSL_CRT``
-and ``SSL_KEY`` env variables (see Environment section below). *http* (port 80) 
+and ``SSL_KEY`` env variables (see Environment section below). *http* (port 80)
 requests will be redirected to *https* (port 443).
 
 Example:
@@ -110,8 +110,9 @@ taigafront:
 
 * ``PUBLIC_REGISTER_ENABLED`` defaults to ``true``
 * ``API`` defaults to ``"/api/v1"``
+* ``DEBUG`` defaults to ``false``
 * ``SCHEME`` defaults to ``http``. If ``https`` is used either
-  * ``SSL_CRT`` and ``SSL_KEY`` needs to be set **or** 
+  * ``SSL_CRT`` and ``SSL_KEY`` needs to be set **or**
   * ``/etc/nginx/ssl/`` volume attached with ``ssl.crt`` and ``ssl.key`` files
 * ``SSL_CRT`` SSL certificate value. Valid only when ``SCHEME`` set to https.
 * ``SSL_KEY`` SSL certificate key. Valid only when ``SCHEME`` set to https.
