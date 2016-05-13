@@ -13,11 +13,11 @@ db:
   volumes_from:
     - data
 taigaback:
-  image: htdvisser/taiga-back
+  build: taiga-back
   hostname: dev.example.com
   environment:
     SECRET_KEY: examplesecretkey
-    EMAIL_USE_TLS: True
+    EMAIL_USE_TLS: 'True'
     EMAIL_HOST: smtp.gmail.com
     EMAIL_PORT: 587
     EMAIL_HOST_USER: youremail@gmail.com
@@ -27,7 +27,7 @@ taigaback:
   volumes_from:
     - data
 taigafront:
-  image: htdvisser/taiga-front-dist
+  build: taiga-front-dist
   hostname: dev.example.com
   links:
     - taigaback

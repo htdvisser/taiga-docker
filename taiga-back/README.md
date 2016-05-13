@@ -87,8 +87,10 @@ Domain configuration:
 
 * ``API_SCHEME`` defaults to ``"http"``. Use ``https`` if ``htdvisser/taiga-front-dist`` is used and SSL enabled.
 * ``API_DOMAIN`` defaults to ``"$HOSTNAME"``
+* ``API_NAME`` defaults to ``"api"``
 * ``FRONT_SCHEME`` defaults to ``"http"``. Use ``https`` if ``htdvisser/taiga-front-dist`` is used and SSL enabled.
 * ``FRONT_DOMAIN`` defaults to ``"$HOSTNAME"``
+* ``FRONT_NAME`` defaults to ``"front"``
 
 Email configuration:
 
