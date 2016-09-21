@@ -7,7 +7,7 @@ cd /usr/local/taiga/taiga-back/
 python manage.py collectstatic --noinput
 
 echo "Waiting for Postgresql to be available..."
-while ! nc -z $POSTGRES_PORT_5432_TCP_ADDR 5432; do
+while ! nc -z ${POSTGRES_HOST} ${POSTGRES_PORT}; do
   sleep 1
 done
 
