@@ -22,6 +22,8 @@ taigaback:
     EMAIL_PORT: 587
     EMAIL_HOST_USER: youremail@gmail.com
     EMAIL_HOST_PASSWORD: yourpassword
+    POSTGRES_HOST: postgres
+    POSTGRES_PORT: 5432
   links:
     - db:postgres
   volumes_from:
